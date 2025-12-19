@@ -7,6 +7,15 @@ import pickle
 import sys
 import os
 
+# Download NLTK data before imports (for Streamlit Cloud)
+import nltk
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords', quiet=True)
+    nltk.download('wordnet', quiet=True)
+    nltk.download('omw-1.4', quiet=True)
+
 # Add backend to path
 current_dir = os.getcwd()
 backend_path = os.path.join(current_dir, 'backend')
