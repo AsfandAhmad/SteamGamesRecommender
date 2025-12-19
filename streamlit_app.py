@@ -237,8 +237,16 @@ def main():
     recommender, games_df = load_recommender()
     
     if recommender is None:
-        st.error("❌ Failed to load recommendation model. Please run `python backend/train_model.py` first.")
-        st.info("💡 Run: `cd backend && python train_model.py`")
+        st.error("❌ Model files not found!")
+        st.warning("🔧 This usually happens on Streamlit Cloud with Git LFS files.")
+        st.info("""
+        **Solutions:**
+        1. Enable Git LFS in Streamlit Cloud advanced settings
+        2. Or download model files manually from GitHub releases
+        3. Contact the developer for pre-trained models
+        
+        **For developers:** The models need to be in `backend/models/` directory.
+        """)
         return
     
     # Success message with metrics
