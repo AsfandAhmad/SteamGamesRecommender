@@ -38,7 +38,6 @@ env/
 nohup.out
 
 # Models and Data (large files)
-backend/models/*.pkl
 data/raw/*.csv
 
 # OS
