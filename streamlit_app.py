@@ -30,6 +30,21 @@ from config import VECTORIZER_PATH, GAME_VECTORS_PATH, PROCESSED_GAMES_FILE
 def load_recommender():
     """Load the recommendation model (cached)"""
     try:
+        # Ensure model directory exists
+        model_dir = os.path.dirname(VECTORIZER_PATH)
+        if not os.path.exists(model_dir):
+            os.makedirs(model_dir, exist_ok=True)
+        
+        # Check if model files exist
+        if not os.path.exists(VECTORIZER_PATH):
+            st.error(f"❌ Model file not found: {VECTORIZER_PATH}")
+            st.info("📋 Files in backend/models: " + str(os.listdir(model_dir) if os.path.exists(model_dir) else "Directory doesn't exist"))
+            return None, None
+            
+        if not os.path.exists(GAME_VECTORS_PATH):
+            st.error(f"❌ Model file not found: {GAME_VECTORS_PATH}")
+            return None, None
+        
         # Load vectorizer
         with open(VECTORIZER_PATH, 'rb') as f:
             vectorizer = pickle.load(f)
