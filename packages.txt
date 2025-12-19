@@ -1,7 +1,0 @@
-import streamlit as st
-import nltk
-
-# Download NLTK data on Streamlit Cloud
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('omw-1.4')

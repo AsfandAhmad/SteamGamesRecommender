@@ -213,7 +213,7 @@ def main():
     
     # Sidebar
     with st.sidebar:
-        st.image("https://cdn.cloudflare.steamstatic.com/store/home/store_nav_bg.png", use_container_width=True)
+        st.image("https://cdn.cloudflare.steamstatic.com/store/home/store_nav_bg.png", width='stretch')
         st.markdown("### ⚙️ Settings")
         top_n = st.slider("Number of recommendations", min_value=5, max_value=100, value=10, step=5)
         
@@ -289,19 +289,19 @@ def main():
         col1, col2, col3, col4 = st.columns(4)
         
         with col1:
-            if st.button("⚔️ Action/Combat", use_container_width=True):
+            if st.button("⚔️ Action/Combat", width='stretch'):
                 user_review = "fast-paced action shooter with intense combat and great graphics"
                 
         with col2:
-            if st.button("🧩 Puzzle/Strategy", use_container_width=True):
+            if st.button("🧩 Puzzle/Strategy", width='stretch'):
                 user_review = "challenging puzzle games with creative solutions and relaxing music"
                 
         with col3:
-            if st.button("👥 Multiplayer", use_container_width=True):
+            if st.button("👥 Multiplayer", width='stretch'):
                 user_review = "fun cooperative multiplayer games to play with friends online"
                 
         with col4:
-            if st.button("📖 Story/RPG", use_container_width=True):
+            if st.button("📖 Story/RPG", width='stretch'):
                 user_review = "immersive RPG with deep story amazing characters and exploration"
         
         st.markdown("<br>", unsafe_allow_html=True)
@@ -309,7 +309,7 @@ def main():
         # Search button
         search_col1, search_col2, search_col3 = st.columns([1, 2, 1])
         with search_col2:
-            search_button = st.button("🚀 Find My Perfect Games", type="primary", use_container_width=True)
+            search_button = st.button("🚀 Find My Perfect Games", type="primary", width='stretch')
         
         if search_button:
             if user_review.strip():
@@ -364,7 +364,7 @@ def main():
                             data=csv,
                             file_name="recommendations.csv",
                             mime="text/csv",
-                            use_container_width=True
+                            width='stretch'
                         )
                 
                 else:
@@ -426,7 +426,7 @@ def main():
         st.markdown("<br>", unsafe_allow_html=True)
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            generate_btn = st.button("📊 GENERATE TOP 100 RANKINGS", type="primary", key="generate_top100", use_container_width=True)
+            generate_btn = st.button("📊 GENERATE TOP 100 RANKINGS", type="primary", key="generate_top100", width='stretch')
         
         if generate_btn:
             # Combine profile with genres
@@ -471,14 +471,14 @@ def main():
                     df_mid = pd.DataFrame(recommendations[10:50])
                     df_mid = df_mid[['rank', 'game_name', 'game_id', 'match_percentage']]
                     df_mid.columns = ['Rank', 'Game Name', 'Game ID', 'Match %']
-                    st.dataframe(df_mid, use_container_width=True, height=400)
+                    st.dataframe(df_mid, width='stretch', height=400)
                     
                     st.markdown("<br>", unsafe_allow_html=True)
                     st.markdown("### 💡 Explore More (51-100)")
                     df_low = pd.DataFrame(recommendations[50:100])
                     df_low = df_low[['rank', 'game_name', 'game_id', 'match_percentage']]
                     df_low.columns = ['Rank', 'Game Name', 'Game ID', 'Match %']
-                    st.dataframe(df_low, use_container_width=True, height=400)
+                    st.dataframe(df_low, width='stretch', height=400)
                     
                     # Download full list
                     st.markdown("<br><br>", unsafe_allow_html=True)
@@ -491,7 +491,7 @@ def main():
                             data=csv,
                             file_name="top_100_recommendations.csv",
                             mime="text/csv",
-                            use_container_width=True
+                            width='stretch'
                         )
             
             else:
